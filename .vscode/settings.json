@@ -1,0 +1,11 @@
+{
+  "http.proxySupport": "off",
+  "http.proxy": "",
+  "http.systemCertificates": true,
+  "rest-client.proxy": "",
+  "rest-client.proxyStrictSSL": false,
+  "rest-client.environmentVariables": {
+    "no_proxy": "localhost,127.0.0.1",
+    "NO_PROXY": "localhost,127.0.0.1"
+  }
+}
