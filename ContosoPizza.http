@@ -5,7 +5,75 @@ Accept: application/json
 
 ###
 
+# GET all pizzas - Status: 200 OK
 GET {{ContosoPizza_HostAddress}}/pizza/
 Accept: application/json
 
 ###
+
+# GET pizza by ID (existing) - Status: 200 OK
+GET {{ContosoPizza_HostAddress}}/pizza/1
+Accept: application/json
+
+###
+
+# GET pizza by ID (non-existing) - Status: 404 Not Found
+GET {{ContosoPizza_HostAddress}}/pizza/999
+Accept: application/json
+
+###
+
+# POST create new pizza - Status: 201 Created
+POST {{ContosoPizza_HostAddress}}/pizza/
+Content-Type: application/json
+
+{
+  "name": "Pepperoni",
+  "isGlutenFree": false
+}
+
+###
+
+# PUT update existing pizza - Status: 204 No Content
+PUT {{ContosoPizza_HostAddress}}/pizza/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Classic Italian Special",
+  "isGlutenFree": false
+}
+
+###
+
+# PUT update with mismatched ID - Status: 400 Bad Request
+PUT {{ContosoPizza_HostAddress}}/pizza/1
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "Updated Pizza",
+  "isGlutenFree": true
+}
+
+###
+
+# PUT update non-existing pizza - Status: 404 Not Found
+PUT {{ContosoPizza_HostAddress}}/pizza/999
+Content-Type: application/json
+
+{
+  "id": 999,
+  "name": "Non-existing Pizza",
+  "isGlutenFree": false
+}
+
+###
+
+# DELETE existing pizza - Status: 204 No Content
+DELETE {{ContosoPizza_HostAddress}}/pizza/3
+
+###
+
+# DELETE non-existing pizza - Status: 404 Not Found
+DELETE {{ContosoPizza_HostAddress}}/pizza/999
